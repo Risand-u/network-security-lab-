@@ -1,0 +1,50 @@
+# Subnetting Lab
+
+## What I Built
+Company network with 3 departments each
+with their own subnet using Cisco Packet Tracer.
+
+## Network Layout
+IT Department  → 192.168.1.0/26   (62 devices)
+Office Staff   → 192.168.1.64/26  (62 devices)
+Management     → 192.168.1.128/26 (62 devices)
+
+## IP Addresses Used
+IT Department
+- Router: 192.168.1.1
+- PC1:    192.168.1.2
+- PC2:    192.168.1.3
+
+Office Staff
+- Router: 192.168.1.65
+- PC3:    192.168.1.66
+- PC4:    192.168.1.67
+
+Management
+- Router: 192.168.1.129
+- PC5:    192.168.1.130
+- PC6:    192.168.1.131
+
+## Router Commands Used
+int gig0/0
+ip address 192.168.1.1 255.255.255.192
+no shutdown
+
+int gig0/1
+ip address 192.168.1.65 255.255.255.192
+no shutdown
+
+int gig0/2
+ip address 192.168.1.129 255.255.255.192
+no shutdown
+
+## What I Learned
+- How to divide one big network into smaller subnets
+- /26 gives 62 usable devices per subnet
+- Router connects all subnets together
+- Switches need no configuration for basic connectivity
+
+## Tests Performed
+- Pinged PC1 to PC2 same subnet - Success
+- Pinged PC1 to PC3 different subnet - Success
+- Pinged PC1 to PC5 different subnet - Success
