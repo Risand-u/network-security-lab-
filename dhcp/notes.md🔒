@@ -1,0 +1,99 @@
+# DHCP Lab
+
+Date: February 26, 2026
+Topic: DHCP Configuration
+Stage: Stage 1 — Beginner
+Status: ✅ Completed
+
+## What I Built
+Configured router as DHCP server for 3 department
+network. PCs automatically get IP addresses without
+manual configuration.
+
+## Network Layout
+IT Department  → 192.168.1.0/26
+Office Staff   → 192.168.1.64/26
+Management     → 192.168.1.128/26
+
+## DHCP Pools Configured
+
+IT Department Pool
+- Network:  192.168.1.0 255.255.255.192
+- Gateway:  192.168.1.1
+- DNS:      8.8.8.8
+- Excluded: 192.168.1.1 to 192.168.1.10
+- Range:    192.168.1.11 to 192.168.1.62
+
+Office Staff Pool
+- Network:  192.168.1.64 255.255.255.192
+- Gateway:  192.168.1.65
+- DNS:      8.8.8.8
+- Excluded: 192.168.1.65 to 192.168.1.74
+- Range:    192.168.1.75 to 192.168.1.126
+
+Management Pool
+- Network:  192.168.1.128 255.255.255.192
+- Gateway:  192.168.1.129
+- DNS:      8.8.8.8
+- Excluded: 192.168.1.129 to 192.168.1.138
+- Range:    192.168.1.139 to 192.168.1.190
+
+## Commands Used
+
+# Exclude router IPs
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+ip dhcp excluded-address 192.168.1.65 192.168.1.74
+ip dhcp excluded-address 192.168.1.129 192.168.1.138
+
+# IT Department pool
+ip dhcp pool IT-DEPARTMENT
+network 192.168.1.0 255.255.255.192
+default-router 192.168.1.1
+dns-server 8.8.8.8
+exit
+
+# Office Staff pool
+ip dhcp pool OFFICE-STAFF
+network 192.168.1.64 255.255.255.192
+default-router 192.168.1.65
+dns-server 8.8.8.8
+exit
+
+# Management pool
+ip dhcp pool MANAGEMENT
+network 192.168.1.128 255.255.255.192
+default-router 192.168.1.129
+dns-server 8.8.8.8
+exit
+
+# Verify DHCP pools
+do show ip dhcp pool
+
+# Verify DHCP leases
+do show ip dhcp binding
+
+## PC IP Addresses Received
+
+IT Department
+- PC0: 192.168.1.12 (automatic)
+- PC1: 192.168.1.11 (automatic)
+
+Office Staff
+- PC2: 192.168.1.75 (automatic)
+- PC3: 192.168.1.76 (automatic)
+
+Management
+- PC4: 192.168.1.139 (automatic)
+- PC5: 192.168.1.140 (automatic)
+
+## Test Results
+- Ping same department:    Success ✅
+- Ping different department: Success ✅
+
+## What I Learned
+- DHCP automatically gives IP addresses to devices
+- DORA process: Discover, Offer, Request, Acknowledge
+- DHCP pool is range of IPs server can give out
+- Excluded addresses reserved for special devices
+- Router can act as DHCP server for small networks
+- DHCP gives first available IP regardless of PC order
