@@ -9,11 +9,15 @@ Cisco Packet Tracer step by step.
 
 ## Projects
 
-| Project | Topic | Status |
-|---------|-------|--------|
-| basic-network | Router, Switch, VLANs, ACL | ✅ Done |
-| subnetting | Dividing networks into subnets | ✅ Done |
-| dhcp | Automatic IP configuration | ✅ Done |
+- ✅ Basic network setup (Router, Switch, PCs)
+- ✅ IP addressing
+- ✅ VLANs
+- ✅ ACL Firewall rules
+- ✅ Basic ping testing
+- ✅ Subnetting
+- ✅ DHCP
+- ✅ DNS basics
+- ✅ 1st stage revison 
 
 ---
 
